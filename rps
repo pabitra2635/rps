@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors game</title>
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.fake{
+    background-color: #273772;
+    height: 5rem;
+    line-height: 5rem; 
+}
+.heading{
+    position: fixed;
+    background-color: #273772;
+    height: 5rem;
+    width: 100%;
+    line-height: 5rem;
+}
+h1{
+    background-image: linear-gradient(-225deg,
+    rgb(255, 255, 255) 0%,
+    #ff0000 29%,
+    #00eed6 57%,
+    #1eff00 100%
+    );
+    
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #ffffff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+   font-size: 30px;
+   font-weight: 800;
+}
+@keyframes textclip{
+    to{
+      background-position: -200% ;
+    }
+}
+.choice:hover{
+    cursor: pointer;
+    background-color: black;
+}
+.choice{
+    height: 100px;
+    width: 85px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+.score-board{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 2rem;
+}
+.name{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
+#user-score, #comp-score{
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+.msg-container{
+    margin-top: 5rem;    
+}
+#msg{
+    background-color: #081b31;
+    color: aliceblue;
+    font-size: 1rem;
+   display: inline;
+   padding: 1rem;
+   border-radius: 0.5rem;
+}
+body{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        45deg,#3a492c,#ff0cce,#07685e,#1eff00
+    );
+    background-size: 400%;
+    animation: gradient 5s infinite;
+}
+@keyframes gradient{
+    0%,100%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+}
+#pmt:hover{
+    opacity: 50%;
+}
+.yt{
+    background-color: #081b31;
+    width: 16rem;
+    margin-top: 3rem;
+    margin-left: 0rem;
+    margin-right: 1rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    border-radius: 40%;
+    color: antiquewhite;
+}
+.founder{
+    background-color: #081b31;
+    width: 16rem;
+    margin-top: 3rem;
+    margin-left: 1rem;
+    margin-right: 0rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    border-radius: 40%;
+    color: antiquewhite;
+}
+.end{
+    display: flex;
+}</style>
+<body>
+    
+ <div class="heading">
+    <h1>Rock Paper Scissors</h1>
+  </div>
+  <div class="fake"></div>
+  <div class="choices">
+    <div class="choice" id="rock">
+        <img src="https://i.ibb.co/RDGNRwn/rock.webp" alt="rock" />
+    </div>
+    <div class="choice" id="paper">
+        <img src="https://i.ibb.co/4RJtxnQ/paper.jpg" alt="paper" />
+    </div>
+    <div class="choice" id="scissors">
+        <img src="https://i.ibb.co/84QQgkw/scissors.jpg" alt="scissors" />
+    </div>
+  </div>
+
+  <div class="score-board">
+    <div class="score" >
+        <p id="user-score">0</p>
+        <p class="name">You</p>
+    </div>
+    <div class="score">
+        <p  id="comp-score">0</p>
+        <p class="name">Opponent</p>
+    </div>
+  </div>
+
+  <div class="msg-container">
+    <p id="msg">Play your move</p>
+  </div>
+  <div class="end">
+  <div class="yt">
+    <h6>visit PMT 20.</h6>
+    <a href="https://youtube.com/@pmt20?si=kAJQOL22kvE_dzCc" target="_main"><img id="pmt" src="https://i.ibb.co/BjcQPgv/Whats-App-Image-2024-05-26-at-10-02-40-ec4ddd2e.jpg"/></a>
+  </div>
+  
+    <div class="founder">
+    <h5>Founder</h5>
+    <img src="https://i.ibb.co/RP1dB5j/IMG-20221225-WA0026.jpg" height="100px" width="100px" >
+    <h5>PABITRA MONDAL</h5>
+    </div>
+</div>
+  <script >alert(" If player choice is the same as computer_choice, its a tie.If player choice is rock, It wins against scissors and loses against paper.If player choice is paper, It wins against rock and loses against scissors.If player choice is scissors, It wins against paper and loses against rock.    Here,10 is the win score.");
+    let userscore = 0;
+    let compscore = 0;
+    
+    const choices=document.querySelectorAll(".choice");
+    const msg=document.querySelector("#msg");
+    const userScore =document.querySelector("#user-score");
+    const compScore =document.querySelector("#comp-score");
+    
+    const genCompChoice =()=>{
+        const options =["rock","paper","scissors"];
+        const randIdx=Math.floor(Math.random()*3);
+        return options[randIdx];
+    }
+    
+    const showWinner =(userWin,userChoice,compChoice)=>{
+       if(userWin){
+        userscore++;
+        userScore.innerText = userscore;
+        msg.innerText= `You win! Your ${userChoice} beats ${compChoice}`;
+        msg.style.backgroundColor ="green"; 
+       }else{
+        compscore++;
+        compScore.innerText = compscore;
+        msg.innerText= `You lose. ${compChoice} beats your ${userChoice}`;
+        msg.style.backgroundColor ="red"; 
+       }
+       if(userscore===10){
+        alert("Congratulation!!! You won the match. Play again...");
+        userScore.innerText = 0;
+        compScore.innerText = 0;
+       }else if(compscore===10){
+        alert("Batter luck next time. Opponent won the match. Play again...");
+        userScore.innerText = 0;
+        compScore.innerText = 0;
+       }
+    }
+    
+    const drawGame =()=>{
+        msg.innerText= "Game was draw. Play again";
+        msg.style.backgroundColor ="#081b31"; 
+    }
+      
+    const playGame =(userChoice) =>{
+        const compChoice=genCompChoice();
+    
+        if(userChoice === compChoice){
+            drawGame();
+        }else{
+            let userWin =true;
+            if(userChoice ==="rock"){
+               userWin= compChoice === "paper"?false:true;
+            }else if(userChoice ==="paper"){
+                userWin= compChoice === "scissors"?false:true;
+             }else{
+                userWin= compChoice === "rock"?false:true;
+             }
+             showWinner(userWin,userChoice,compChoice);
+        }
+    
+    }
+    
+    choices.forEach((choice)=>{
+        choice.addEventListener("click",()=>{
+              const userChoice = choice.getAttribute("id");
+              playGame(userChoice);
+        })
+    })</script>
+</body>
+</html>
